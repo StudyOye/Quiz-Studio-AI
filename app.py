@@ -264,7 +264,7 @@ def create_qa_master_pdf(quiz_data: Dict) -> io.BytesIO:
     return buffer
 
 # Streamlit UI Construction
-st.title("⚡ Quiz Show Creator AI")
+st.title("⚡ Quiz Studio AI")
 st.caption("Printable Deliverables & Automated Quiz Master Guide")
 
 st.sidebar.header("📁 Upload Source Files")
