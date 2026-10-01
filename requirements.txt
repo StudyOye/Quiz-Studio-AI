@@ -1,0 +1,7 @@
+streamlit
+google-genai
+python-pptx
+reportlab
+pypdf
+pillow
+python-docx
