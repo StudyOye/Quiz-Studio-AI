@@ -1,3 +1,58 @@
+import streamlit as st
+import streamlit.components.v1 as components
+
+# ------------------------------------------------------------------------------
+# PWA ONE-CLICK INSTALL BUTTON COMPONENT
+# ------------------------------------------------------------------------------
+pwa_installer_code = """
+<div id="pwa-install-wrapper" style="display:none; font-family: sans-serif; margin: 10px 0;">
+    <button id="pwa-install-btn" style="
+        width: 100%;
+        background-color: #ff4b4b;
+        color: #ffffff;
+        border: none;
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: background-color 0.2s ease;
+    ">
+        📲 Install App to Home Screen
+    </button>
+</div>
+
+<script>
+let deferredPrompt;
+
+// 1. Capture the browser's install event
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent standard mini-infobar from showing
+    e.preventDefault();
+    deferredPrompt = e;
+    
+    // Unhide the custom Install button inside Streamlit
+    document.getElementById('pwa-install-wrapper').style.display = 'block';
+});
+
+// 2. Trigger native prompt on click
+document.getElementById('pwa-install-btn').addEventListener('click', async () => {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+            document.getElementById('pwa-install-wrapper').style.display = 'none';
+        }
+        deferredPrompt = null;
+    }
+});
+</script>
+"""
+
+# Render the component in Streamlit layout
+components.html(pwa_installer_code, height=70)
+
 import os
 import json
 import io
