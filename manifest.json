@@ -1,0 +1,15 @@
+{
+  "short_name": "QuizStudio",
+  "name": "Quiz Studio AI",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3407/3407024.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "theme_color": "#ff4b4b",
+  "display": "standalone"
+}
