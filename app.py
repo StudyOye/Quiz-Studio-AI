@@ -97,7 +97,8 @@ st.markdown("""
         height: 60px;
         background-color: #FFFFFF;
         z-index: 9999999;
-        pointer-events: none;
+        pointer-events: auto !important; /* Intercepts and blocks all taps */
+        cursor: default;
     }
     </style>
 """, unsafe_allow_html=True)
