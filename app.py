@@ -83,47 +83,37 @@ from docx.shared import Pt as DocxPt, RGBColor as DocxRGBColor, Inches as DocxIn
 st.set_page_config(page_title="Quiz Studio AI", page_icon="🎯", layout="wide")
 
 # ------------------------------------------------------------------------------
-# CUSTOM CSS: HIDE TOP-RIGHT MENU & BOTTOM BADGES (KEEP SIDEBAR ARROWS)
+# SOLID OVERLAY BLOCKS TO COVER TOP-RIGHT HEADER & BOTTOM-RIGHT BADGE
 # ------------------------------------------------------------------------------
 st.markdown("""
     <style>
-    /* 1. Hide top-right menu items (Fork, GitHub icon, 3-dots menu) */
-    div[data-testid="stToolbar"] {
-        display: none !important;
-    }
-    
-    /* 2. Keep top header transparent so sidebar arrow button remains visible */
-    header[data-testid="stHeader"] {
-        background: transparent !important;
-        z-index: 999999 !important;
-    }
-    
-    /* Ensure sidebar toggle button is always clickable and visible */
-    button[data-testid="stSidebarCollapseButton"],
-    button[aria-label="Expand sidebar"],
-    button[aria-label="Collapse sidebar"] {
-        visibility: visible !important;
-        display: block !important;
-        z-index: 1000000 !important;
+    /* 1. Cover rectangle for Top-Right (Fork, GitHub Icon, 3 Dots) */
+    .stApp::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 180px;
+        height: 60px;
+        background-color: #FFFFFF; /* Matches app background */
+        z-index: 9999999;
+        pointer-events: none; /* Allows clicks to pass through if needed */
     }
 
-    /* 3. Hide bottom right Streamlit Community Cloud badge and avatar */
-    footer,
-    #MainMenu,
-    .viewerBadge_container__163Vn,
-    [data-testid="stDecoration"],
-    [data-testid="stStatusWidget"],
-    .stAppViewBlockContainer + div,
-    a[href*="streamlit.io"],
-    div[class*="viewerBadge"],
-    div[class*="profileContainer"] {
-        display: none !important;
-        visibility: hidden !important;
-        height: 0px !important;
+    /* 2. Cover rectangle for Bottom-Right (Streamlit Cloud Red Crown Badge) */
+    .stApp::after {
+        content: "";
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 160px;
+        height: 70px;
+        background-color: #FFFFFF; /* Matches app background */
+        z-index: 9999999;
+        pointer-events: none;
     }
     </style>
 """, unsafe_allow_html=True)
-
 
 # ------------------------------------------------------------------------------
 # GEMINI CLIENT INITIALIZATION (SECURE & CLOUD-READY)
