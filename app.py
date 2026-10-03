@@ -82,6 +82,33 @@ from docx.shared import Pt as DocxPt, RGBColor as DocxRGBColor, Inches as DocxIn
 # ------------------------------------------------------------------------------
 st.set_page_config(page_title="Quiz Studio AI", page_icon="🎯", layout="wide")
 
+# ------------------------------------------------------------------------------
+# CUSTOM CSS: HIDE STREAMLIT HEADER & FOOTER (KEEP SIDEBAR ARROWS VISIBLE)
+# ------------------------------------------------------------------------------
+st.markdown("""
+    <style>
+    /* 1. Hide top-right menu items (Fork, GitHub icon, 3-dots menu) */
+    div[data-testid="stToolbar"] {
+        display: none !important;
+    }
+    
+    /* 2. Hide top header background bar, but allow sidebar control button to show */
+    header[data-testid="stHeader"] {
+        background: transparent !important;
+    }
+    
+    /* 3. Hide bottom footer branding and viewer badges */
+    footer {
+        display: none !important;
+    }
+    .viewerBadge_container__163Vn, 
+    [data-testid="stDecoration"], 
+    ._profileContainer_gz34q_1 {
+        display: none !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 
 # ------------------------------------------------------------------------------
 # GEMINI CLIENT INITIALIZATION (SECURE & CLOUD-READY)
