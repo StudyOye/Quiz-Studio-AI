@@ -404,7 +404,7 @@ def create_qa_master_docx(quiz_data: Dict) -> bytes:
 # ------------------------------------------------------------------------------
 st.title("🎯 Quiz Studio AI")
 
-target_language = st.sidebar.selectbox("Select Output PPT Language:", options=["English", "Punjabi", "Hindi"], index=0)
+target_language = st.sidebar.selectbox("Select Output PPT Language:", options=["English", "Punjabi"], index=0)
 org_name = st.sidebar.text_input("Organisation Name", value="GMSSS Dhrangwala")
 quiz_name = st.sidebar.text_input("Quiz Name / Title", value="Shiksha-Hack 2026 IT Quiz")
 uploaded_pdfs = st.sidebar.file_uploader("Upload Source PDFs", type=["pdf"], accept_multiple_files=True)
