@@ -83,11 +83,11 @@ from docx.shared import Pt as DocxPt, RGBColor as DocxRGBColor, Inches as DocxIn
 st.set_page_config(page_title="Quiz Studio AI", page_icon="🎯", layout="wide")
 
 # ------------------------------------------------------------------------------
-# SOLID OVERLAY BLOCKS TO COVER TOP-RIGHT HEADER & BOTTOM-RIGHT BADGE
+# SOLID OVERLAY BLOCK TO COVER TOP-RIGHT HEADER
 # ------------------------------------------------------------------------------
 st.markdown("""
     <style>
-    /* 1. Cover rectangle for Top-Right (Fork, GitHub Icon, 3 Dots) */
+    /* Cover rectangle for Top-Right (Fork, GitHub Icon, 3 Dots) */
     .stApp::before {
         content: "";
         position: fixed;
@@ -95,20 +95,7 @@ st.markdown("""
         right: 0;
         width: 180px;
         height: 60px;
-        background-color: #FFFFFF; /* Matches app background */
-        z-index: 9999999;
-        pointer-events: none; /* Allows clicks to pass through if needed */
-    }
-
-    /* 2. Cover rectangle for Bottom-Right (Streamlit Cloud Red Crown Badge) */
-    .stApp::after {
-        content: "";
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        width: 160px;
-        height: 70px;
-        background-color: #FFFFFF; /* Matches app background */
+        background-color: #FFFFFF;
         z-index: 9999999;
         pointer-events: none;
     }
