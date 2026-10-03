@@ -83,7 +83,7 @@ from docx.shared import Pt as DocxPt, RGBColor as DocxRGBColor, Inches as DocxIn
 st.set_page_config(page_title="Quiz Studio AI", page_icon="🎯", layout="wide")
 
 # ------------------------------------------------------------------------------
-# CUSTOM CSS: HIDE STREAMLIT HEADER & FOOTER (KEEP SIDEBAR ARROWS VISIBLE)
+# CUSTOM CSS: HIDE TOP-RIGHT MENU & BOTTOM BADGES (KEEP SIDEBAR ARROWS)
 # ------------------------------------------------------------------------------
 st.markdown("""
     <style>
@@ -92,19 +92,34 @@ st.markdown("""
         display: none !important;
     }
     
-    /* 2. Hide top header background bar, but allow sidebar control button to show */
+    /* 2. Keep top header transparent so sidebar arrow button remains visible */
     header[data-testid="stHeader"] {
         background: transparent !important;
+        z-index: 999999 !important;
     }
     
-    /* 3. Hide bottom footer branding and viewer badges */
-    footer {
-        display: none !important;
+    /* Ensure sidebar toggle button is always clickable and visible */
+    button[data-testid="stSidebarCollapseButton"],
+    button[aria-label="Expand sidebar"],
+    button[aria-label="Collapse sidebar"] {
+        visibility: visible !important;
+        display: block !important;
+        z-index: 1000000 !important;
     }
-    .viewerBadge_container__163Vn, 
-    [data-testid="stDecoration"], 
-    ._profileContainer_gz34q_1 {
+
+    /* 3. Hide bottom right Streamlit Community Cloud badge and avatar */
+    footer,
+    #MainMenu,
+    .viewerBadge_container__163Vn,
+    [data-testid="stDecoration"],
+    [data-testid="stStatusWidget"],
+    .stAppViewBlockContainer + div,
+    a[href*="streamlit.io"],
+    div[class*="viewerBadge"],
+    div[class*="profileContainer"] {
         display: none !important;
+        visibility: hidden !important;
+        height: 0px !important;
     }
     </style>
 """, unsafe_allow_html=True)
